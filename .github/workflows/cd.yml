@@ -33,6 +33,7 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud auth activate-service-account --key-file=${{ secrets.GCP_CREDENTIALS }}
+          echo "${{ secrets.GCP_CREDENTIALS }}" > $HOME/gcp-key.json
+          gcloud auth activate-service-account --key-file=$HOME/gcp-key.json
           gcloud builds submit \
             --tag us-central1-docker.pkg.dev/strange-radius-462203-q0/notely-ar-repo/notely:latest .
