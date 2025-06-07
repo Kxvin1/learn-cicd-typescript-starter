@@ -44,6 +44,6 @@ v1Router.get("/healthz", handlerReadiness);
 
 app.use("/v1", v1Router);
 
-app.listen(config.api.port, () => {
-  console.log(`Server is running on port: ${config.api.port}`);
+app.listen(config.api.port as unknown as number, "0.0.0.0", () => {
+  console.log(`Server is running on http://localhost:${config.api.port}`);
 });
