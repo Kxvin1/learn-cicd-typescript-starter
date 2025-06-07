@@ -23,3 +23,15 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: strange-radius-462203-q0
+          service_account_key: ${{ secrets.GCP_CREDENTIALS }}
+          export_default_credentials: true
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud builds submit \
+            --tag us-central1-docker.pkg.dev/strange-radius-462203-q0/notely-ar-repo/notely:latest .
