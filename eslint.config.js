@@ -1,7 +1,6 @@
 import globals from "globals";
 import tseslint from "typescript-eslint";
 import { defineConfig } from "eslint/config";
-import pluginSecurity from "@typescript-eslint/eslint-plugin-security";
 
 export default defineConfig([
   {
@@ -9,5 +8,4 @@ export default defineConfig([
     languageOptions: { globals: globals.browser },
   },
   tseslint.configs.recommended,
-  pluginSecurity.configs.recommended,
 ]);
